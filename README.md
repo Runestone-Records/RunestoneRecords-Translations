@@ -13,7 +13,9 @@ This repository contains the mod's custom interface text. Valheim supplies nativ
 
 Partial translations are welcome. Missing entries fall back to English. You can edit a file directly through GitHub; no game assemblies, mod source or compiler are required to contribute.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for examples, local testing and review guidance. If you prefer, attach your JSON file to an issue instead.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for examples and review guidance. You can [test an open translation PR in game](CONTRIBUTING.md#test-a-translation-before-merging) without merging it or rebuilding the mod: download its language JSON, copy it into the active `BepInEx/config/RunestoneRecords/Translations` directory, then restart Valheim. A localization-enabled build (1.5.0-beta or newer) is required.
+
+If you prefer, attach your JSON file to an issue instead.
 
 ## Current status
 
