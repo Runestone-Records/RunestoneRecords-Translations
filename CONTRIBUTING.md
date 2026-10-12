@@ -22,15 +22,60 @@ Example:
 }
 ```
 
-## Test locally
+## Test a translation before merging
 
-1. Install Runestone Records 1.5.0-beta or a later localization-enabled release.
-2. Launch Valheim once, then close it.
-3. Copy your language file to `Valheim/BepInEx/config/RunestoneRecords/Translations/<Language>.json`.
-4. Restart Valheim and select your language in the game's settings.
-5. Check Achievements and Statistics, search, categories, buttons, expanded requirements, progress summaries and the tracker. Resize both windows and test long labels and special characters.
+You can test your own changes or someone else's open pull request **without merging it or rebuilding the mod**. No Git installation or compiler is needed.
 
-Files beside the plugin are reference copies. Runtime customizations belong in the **config** directory. Edits require restarting Valheim. Do not edit the managed `.bundled-baselines` directory; it lets untouched entries follow updated bundled translations.
+### 1. Get a localization-enabled build
+
+Install Runestone Records **1.5.0-beta or a later localization-enabled release**, with its required BepInEx and Jötunn dependencies. Earlier releases do not load these language files. If a localization-enabled build is not available in the mod's downloads yet, request the beta from the maintainer.
+
+Launch Valheim once with that build, then close the game. The mod creates editable language files in its config directory.
+
+### 2. Download the translation from the PR
+
+Open the pull request and find `Translations/<Language>.json` under **Files changed**. Open the file from the PR's source branch and download its **raw JSON**. Downloading from `main` instead gives you the currently merged version, not the proposed translation.
+
+You can also use the JSON you are editing locally. Keep its exact filename, for example `Portuguese_Brazilian.json`. Save it as UTF-8 JSON, not an HTML page or a file ending in `.json.txt`.
+
+### 3. Put it in the active config directory
+
+Back up your existing language JSON outside the `Translations` directory if you have personal edits. Copy the downloaded file into:
+
+```text
+Valheim/BepInEx/config/RunestoneRecords/Translations/<Language>.json
+```
+
+For Brazilian Portuguese, the full relative path is:
+
+```text
+Valheim/BepInEx/config/RunestoneRecords/Translations/Portuguese_Brazilian.json
+```
+
+If you use a mod manager, use the **active profile's** `BepInEx/config` directory. Files in this repository or beside the plugin DLL are reference copies; runtime customizations must go in **config**.
+
+Do not edit the managed `.bundled-baselines` subdirectory. It lets untouched entries follow updated bundled translations while preserving your actual edits.
+
+### 4. Check it in game
+
+Restart Valheim, select the matching language in the game's settings, load a character, and press **F7**.
+
+- Check both **Achievements** and **Statistics**: categories, filters, buttons, search results and progress summaries.
+- Expand achievements and statistics to check requirements, collection entries, difficulty labels and combat methods.
+- Pin a goal to check the HUD tracker. Resize both windows to look for clipped or awkwardly wrapped text.
+- Check accents and special characters. Switch the game language to confirm the journal and tracker refresh correctly.
+
+Native achievement names, descriptions, items, creatures and building pieces still use Valheim's translations. The JSON translates the mod's custom interface text, and **Runestone Records** stays unchanged.
+
+### 5. Iterate and report results
+
+After changing the JSON, **restart Valheim** to reload it. Switching the game language does not reload files edited on disk.
+
+Missing entries fall back to bundled text or English. If text unexpectedly stays in English, check the filename, selected language and active config directory, then inspect `BepInEx/LogOutput.log` for Runestone Records warnings about malformed JSON or invalid placeholders.
+
+Include testing results in your PR or review: build used, language, screens checked, and any wording or layout problems. If you could not test in game, say so; partial or untested contributions are still welcome when clearly described.
+
+To stop testing, restore your backed-up JSON and restart. If you had no personal edits to preserve, delete the test language JSON; the next launch regenerates it from the bundled catalog.
 
 ## Submit
 
