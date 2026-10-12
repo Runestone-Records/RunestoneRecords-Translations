@@ -1,0 +1,21 @@
+name: Translation contribution or correction
+description: Send a translation file or report wording that needs fixing.
+body:
+  - type: input
+    id: language
+    attributes:
+      label: Language
+    validations:
+      required: true
+  - type: textarea
+    id: contribution
+    attributes:
+      label: Translation or correction
+      description: Attach your JSON file, or describe the text and suggested replacement.
+    validations:
+      required: true
+  - type: input
+    id: credit
+    attributes:
+      label: Preferred translator credit
+      description: A name or handle, or "no credit".

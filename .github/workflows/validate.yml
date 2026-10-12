@@ -1,0 +1,24 @@
+name: Validate translations
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate translations
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out contribution
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Check catalogs
+        run: python3 scripts/validate.py
+      - name: Test validation rules
+        run: python3 scripts/test_validation.py
