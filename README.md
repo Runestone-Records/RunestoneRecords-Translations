@@ -19,7 +19,7 @@ If you prefer, attach your JSON file to an issue instead.
 
 ## Current status
 
-English is the canonical catalog. Spanish is fully translated. Brazilian Portuguese has a complete AI-generated catalog awaiting human review and in-game testing. The other 33 game languages contain English templates and are waiting for contributors. A file's existence does **not** mean it has been translated.
+English is the canonical catalog. Spanish is fully translated. Brazilian Portuguese has a complete AI-generated catalog awaiting human review and in-game testing. Japanese has a complete AI-generated catalog verified by **Sakey391**; in-game testing and glyph-rendering checks are still pending. The other 32 game languages contain English templates and are waiting for contributors. A file's existence does **not** mean it has been translated.
 
 [languages.json](languages.json) uses Valheim's exact language names, including `Portuguese_Brazilian` and `Chinese_Trad`. Each initial catalog has 306 keys.
 
